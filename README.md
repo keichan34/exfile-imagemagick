@@ -1,10 +1,10 @@
 # ExfileImagemagick
 
-**TODO: Add description**
+[![Build Status](https://travis-ci.org/keichan34/exfile-imagemagick.svg?branch=master)](https://travis-ci.org/keichan34/exfile-imagemagick)
+
+An ImageMagick file processor suite for [Exfile](https://github.com/keichan34/exfile).
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
   1. Add exfile_imagemagick to your list of dependencies in `mix.exs`:
 
