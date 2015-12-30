@@ -1,2 +1,3 @@
-%{"mogrify": {:hex, :mogrify, "0.2.0"},
+%{"exfile": {:hex, :exfile, "0.0.2"},
+  "mogrify": {:hex, :mogrify, "0.2.0"},
   "plug": {:hex, :plug, "1.0.3"}}
