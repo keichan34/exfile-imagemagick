@@ -1,10 +1,17 @@
 defmodule ExfileImagemagickTest do
   use ExUnit.Case
 
-  test "ExfileImagemagick.Converter is loaded as `convert`" do
+  test "ExfileImagemagick.Convert is loaded as `convert`" do
     assert \
-      {:ok, ExfileImagemagick.Converter}
+      {:ok, ExfileImagemagick.Convert}
       ==
       Exfile.ProcessorRegistry.get_processor_module("convert")
+  end
+
+  test "ExfileImagemagick.Fill is loaded as `fill`" do
+    assert \
+      {:ok, ExfileImagemagick.Fill}
+      ==
+      Exfile.ProcessorRegistry.get_processor_module("fill")
   end
 end

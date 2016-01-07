@@ -37,7 +37,7 @@ defmodule ExfileImagemagick.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:exfile, "~> 0.0.2"},
+      {:exfile, "~> 0.0.2", github: "keichan34/exfile"},
       {:mogrify, ">= 0.0.0"}
     ]
   end
