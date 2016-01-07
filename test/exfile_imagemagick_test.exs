@@ -14,4 +14,11 @@ defmodule ExfileImagemagickTest do
       ==
       Exfile.ProcessorRegistry.get_processor_module("fill")
   end
+
+  test "ExfileImagemagick.Limit is loaded as `limit`" do
+    assert \
+      {:ok, ExfileImagemagick.Limit}
+      ==
+      Exfile.ProcessorRegistry.get_processor_module("limit")
+  end
 end
