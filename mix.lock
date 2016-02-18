@@ -1,6 +1,6 @@
 %{"decimal": {:hex, :decimal, "1.1.1"},
   "ecto": {:hex, :ecto, "1.1.1"},
-  "exfile": {:git, "https://github.com/keichan34/exfile.git", "6fc027d3e5e459f07cef0061ababd24c6a9f5c76", []},
+  "exfile": {:git, "https://github.com/keichan34/exfile.git", "e46c358ba571c1c64f1d89af01ec5b913f57de03", []},
   "mogrify": {:hex, :mogrify, "0.2.0"},
   "phoenix_html": {:hex, :phoenix_html, "2.3.0"},
   "plug": {:hex, :plug, "1.0.3"},

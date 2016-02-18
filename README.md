@@ -4,6 +4,12 @@
 
 An ImageMagick file processor suite for [Exfile](https://github.com/keichan34/exfile).
 
+## Requirements
+
+* A working ImageMagick installation. `identify` and `convert` must be in the
+  `PATH` of the running environment.
+* Elixir `~> 1.2.0`
+
 ## Installation
 
   1. Add exfile_imagemagick to your list of dependencies in `mix.exs`:

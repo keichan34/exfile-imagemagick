@@ -4,7 +4,7 @@ defmodule ExfileImagemagick.Mixfile do
   def project do
     [app: :exfile_imagemagick,
      version: "0.0.1",
-     elixir: "~> 1.1",
+     elixir: "~> 1.2.0",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps]
@@ -16,9 +16,6 @@ defmodule ExfileImagemagick.Mixfile do
   def application do
     [
       mod: {ExfileImagemagick, []},
-      included_applications: [
-        :mogrify
-      ],
       applications: [
         :logger,
         :exfile
@@ -37,8 +34,7 @@ defmodule ExfileImagemagick.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:exfile, "~> 0.0.2", github: "keichan34/exfile"},
-      {:mogrify, ">= 0.0.0"}
+      {:exfile, "~> 0.0.0", github: "keichan34/exfile"}
     ]
   end
 end
