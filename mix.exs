@@ -37,7 +37,7 @@ defmodule ExfileImagemagick.Mixfile do
 
   defp package do
     [
-      files: ["lib", "priv", "mix.exs", "README*", "LICENSE*"],
+      files: ["lib", "mix.exs", "README*", "LICENSE*"],
       maintainers: ["Keitaroh Kobayashi"],
       licenses: ["MIT"],
       links: %{
