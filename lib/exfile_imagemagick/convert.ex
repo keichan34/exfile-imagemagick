@@ -34,7 +34,8 @@ defmodule ExfileImagemagick.Convert do
   defp should_format?(%LocalFile{path: path}, dest_format) do
     case System.cmd("identify", ["-format", "%m", path]) do
       {current_format, 0} ->
-        dest_format != String.downcase(current_format)
+        current_format = current_format |> String.strip |> String.downcase
+        dest_format != current_format
       _ ->
         false
     end

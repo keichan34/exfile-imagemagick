@@ -16,12 +16,12 @@ defmodule ExfileImagemagick.ConvertTest do
   test "it won't convert a file if it is already in the requested format" do
     path = EITH.image_path("DSC08511s25.jpg")
     orig_file = %LocalFile{path: path}
-    {:ok, file} = ExfileImagemagick.Convert.call(orig_file, ["jpeg"], [])
+    {:ok, converted_file} = ExfileImagemagick.Convert.call(orig_file, ["jpeg"], [])
 
-    {:ok, meta_file} = ExfileImagemagick.Metadata.call(file, [], [])
+    {:ok, meta_file} = ExfileImagemagick.Metadata.call(converted_file, [], [])
 
     assert meta_file.meta["format"] == "JPEG"
     assert meta_file.meta["image_size"] == "1148x764"
-    assert orig_file == file
+    assert orig_file == converted_file
   end
 end
