@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/keichan34/exfile-imagemagick.svg?branch=master)](https://travis-ci.org/keichan34/exfile-imagemagick)
 
-An ImageMagick file processor suite for [Exfile](https://github.com/keichan34/exfile).
+An [ImageMagick](http://www.imagemagick.org) file processor suite for [Exfile](https://github.com/keichan34/exfile).
 
 ## Requirements
 
@@ -23,3 +23,12 @@ An ImageMagick file processor suite for [Exfile](https://github.com/keichan34/ex
         def application do
           [applications: [:exfile_imagemagick]]
         end
+
+## Usage
+
+`exfile_imagemagick` automatically registers 4 processors:
+
+* `convert`
+* `fill`
+* `limit`
+* `metadata`

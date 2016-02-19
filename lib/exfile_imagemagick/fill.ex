@@ -1,10 +1,25 @@
 defmodule ExfileImagemagick.Fill do
+  @moduledoc """
+  Resizes an image to fill the desired dimensions.
+
+  The image will be cropped if necessary.
+
+  Arguments:
+
+  * Width (in pixels)
+  * Height (in pixels)
+
+  Options:
+
+  * `:format` - the desired format the output file should be in. Example: jpeg, png, gif, etc.
+  """
+
   @behaviour Exfile.Processor
 
   import ExfileImagemagick.Utilities
   alias Exfile.LocalFile
 
-  def call(file, [width, height], opts \\ []) do
+  def call(file, [width, height], opts) do
     file = coerce_to_file(file)
 
     new_path = Exfile.Tempfile.random_file!("imagemagick")

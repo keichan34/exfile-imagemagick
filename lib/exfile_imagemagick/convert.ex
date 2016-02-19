@@ -1,4 +1,14 @@
 defmodule ExfileImagemagick.Convert do
+  @moduledoc """
+  Converts an image from one format to another.
+
+  Arguments:
+
+  * Destination format.
+
+  "jpg" is aliased as "jpeg".
+  """
+
   @behaviour Exfile.Processor
 
   import ExfileImagemagick.Utilities
@@ -8,7 +18,7 @@ defmodule ExfileImagemagick.Convert do
     "jpg" => "jpeg"
   }
 
-  def call(file, [dest_format], _opts \\ []) do
+  def call(file, [dest_format], _opts) do
     file = coerce_to_file(file)
 
     dest_format = String.downcase(dest_format)
@@ -22,7 +32,7 @@ defmodule ExfileImagemagick.Convert do
   end
 
   defp should_format?(%LocalFile{path: path}, dest_format) do
-    case System.cmd("identify", [path, "-format", "%m"]) do
+    case System.cmd("identify", ["-format", "%m", path]) do
       {current_format, 0} ->
         dest_format != String.downcase(current_format)
       _ ->
@@ -39,7 +49,7 @@ defmodule ExfileImagemagick.Convert do
     ]
     case System.cmd("convert", convert_args) do
       {_, 0} ->
-        meta = Map.put(meta, :format, dest_format)
+        meta = Map.put(meta, "format", String.upcase(dest_format))
         {:ok, %LocalFile{path: new_path, meta: meta}}
       {error, _} ->
         {:error, error}
