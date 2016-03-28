@@ -29,7 +29,7 @@ defmodule ExfileImagemagick.Mixfile do
 
   defp deps do
     [
-      {:exfile, "~> 0.1.1"},
+      {:exfile, "~> 0.2.0"},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.11", only: :dev}
     ]
