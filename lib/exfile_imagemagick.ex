@@ -12,6 +12,6 @@ defmodule ExfileImagemagick do
     Registry.register("limit", ExfileImagemagick.Limit)
     Registry.register("metadata", ExfileImagemagick.Metadata)
 
-    {:ok, self}
+    ExfileImagemagick.Supervisor.start_link
   end
 end
