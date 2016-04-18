@@ -2,7 +2,7 @@
   "earmark": {:hex, :earmark, "0.2.1"},
   "ecto": {:hex, :ecto, "1.1.5"},
   "ex_doc": {:hex, :ex_doc, "0.11.4"},
-  "exfile": {:hex, :exfile, "0.2.0"},
+  "exfile": {:hex, :exfile, "0.3.1"},
   "mogrify": {:hex, :mogrify, "0.2.0"},
   "phoenix_html": {:hex, :phoenix_html, "2.5.1"},
   "plug": {:hex, :plug, "1.0.3"},
