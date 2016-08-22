@@ -25,7 +25,7 @@ defmodule ExfileImagemagick.Limit do
     new_path = Exfile.Tempfile.random_file!("imagemagick")
     destination = destination_with_format(new_path, opts)
 
-    dest_dimensions = to_string(width) <> "x" <> to_string(height)
+    dest_dimensions = to_string(width) <> "x" <> to_string(height) <> ">"
     convert_args = [
       file.path,
       "-auto-orient",
