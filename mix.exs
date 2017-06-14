@@ -8,12 +8,12 @@ defmodule ExfileImagemagick.Mixfile do
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
-      deps: deps,
+      deps: deps(),
       docs: [
         extras: ["README.md"]
       ],
-      package: package,
-      description: description,
+      package: package(),
+      description: description(),
       aliases: [
         "publish": [&git_tag/1, "hex.publish", "hex.docs"]
       ]
@@ -57,9 +57,9 @@ defmodule ExfileImagemagick.Mixfile do
   end
 
   defp git_tag(_args) do
-    version_tag = case Version.parse(project[:version]) do
+    version_tag = case Version.parse(project()[:version]) do
       {:ok, %Version{pre: []}} ->
-        "v" <> project[:version]
+        "v" <> project()[:version]
       _ ->
         raise "Version should be a release version."
     end
