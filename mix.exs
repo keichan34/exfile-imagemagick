@@ -4,7 +4,7 @@ defmodule ExfileImagemagick.Mixfile do
   def project do
     [
       app: :exfile_imagemagick,
-      version: "0.1.2",
+      version: "0.1.4",
       elixir: "~> 1.2",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,

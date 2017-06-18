@@ -15,7 +15,7 @@ An [ImageMagick](http://www.imagemagick.org) file processor suite for [Exfile](h
   1. Add exfile_imagemagick to your list of dependencies in `mix.exs`:
 
         def deps do
-          [{:exfile_imagemagick, "~> 0.1.2"}]
+          [{:exfile_imagemagick, "~> 0.1.4"}]
         end
 
   2. Ensure exfile_imagemagick is started before your application:
