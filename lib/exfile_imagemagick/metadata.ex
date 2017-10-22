@@ -14,9 +14,11 @@ defmodule ExfileImagemagick.Metadata do
 
   import ExfileImagemagick.Utilities
 
+  alias ExfileImagemagick.SysRunner
+
   def call(file, _, _) do
     file = coerce_to_file(file)
-    case System.cmd("identify", ["-format", "format=%m\\nimage_size=%G\\n%[EXIF:*]", file.path]) do
+    case SysRunner.cmd("identify", ["-format", "format=%m\\nimage_size=%G\\n%[EXIF:*]", file.path]) do
       {out, 0} ->
         meta = Map.merge file.meta, extract_meta(out)
         {:ok, %{file | meta: meta}}
