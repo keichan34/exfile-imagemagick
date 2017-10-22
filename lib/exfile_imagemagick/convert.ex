@@ -14,6 +14,8 @@ defmodule ExfileImagemagick.Convert do
   import ExfileImagemagick.Utilities
   alias Exfile.LocalFile
 
+  alias ExfileImagemagick.SysRunner
+
   @format_synonyms %{
     "jpg" => "jpeg"
   }
@@ -32,7 +34,7 @@ defmodule ExfileImagemagick.Convert do
   end
 
   defp should_format?(%LocalFile{path: path}, dest_format) do
-    case System.cmd("identify", ["-format", "%m", path]) do
+    case SysRunner.cmd("identify", ["-format", "%m", path]) do
       {current_format, 0} ->
         current_format = current_format |> String.strip |> String.downcase
         dest_format != current_format
@@ -48,7 +50,7 @@ defmodule ExfileImagemagick.Convert do
       "-auto-orient",
       dest_format <> ":" <> new_path
     ]
-    case System.cmd("convert", convert_args) do
+    case SysRunner.cmd("convert", convert_args) do
       {_, 0} ->
         meta = Map.put(meta, "format", String.upcase(dest_format))
         {:ok, %LocalFile{path: new_path, meta: meta}}

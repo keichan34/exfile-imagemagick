@@ -19,6 +19,8 @@ defmodule ExfileImagemagick.Fill do
   import ExfileImagemagick.Utilities
   alias Exfile.LocalFile
 
+  alias ExfileImagemagick.SysRunner
+
   def call(file, [width, height], opts) do
     file = coerce_to_file(file)
 
@@ -38,7 +40,7 @@ defmodule ExfileImagemagick.Fill do
       destination
     ]
 
-    case System.cmd("convert", convert_args) do
+    case SysRunner.cmd("convert", convert_args) do
       {_, 0} ->
         {:ok, %LocalFile{path: new_path}}
       {error, _} ->
