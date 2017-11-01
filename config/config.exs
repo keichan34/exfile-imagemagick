@@ -7,7 +7,7 @@ use Mix.Config
 # In case of imagemagick make sure that `convert` executable is in your environment's path
 # In case of graphicsmagick make sure that `GM` executable is in your environment's path
 #
-#config :exfile_imagemagick, image_processor: :graphicsmagick
+#config :exfile_imagemagick, image_processor: :imagemagick
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
@@ -15,4 +15,4 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env}.exs"
+import_config "#{Mix.env}.exs"

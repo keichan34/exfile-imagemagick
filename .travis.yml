@@ -5,3 +5,8 @@ elixir:
 otp_release:
   - 18.2
   - 19.0
+before_install:
+  - sudo apt-get install graphicsmagick
+env:
+  - MIX_ENV=test
+  - MIX_ENV=graphicsmagick_test
