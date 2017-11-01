@@ -11,7 +11,7 @@ defmodule ExfileImagemagick.LimitTest do
 
     assert file.meta["format"] == "JPEG"
     assert file.meta["image_size"] == "100x67"
-    assert file.meta["exif:DateTimeOriginal"] == "2012:08:27 08:17:02"
+    assert file.meta["DateTimeOriginal"] == "2012:08:27 08:17:02"
   end
 
   test "it works with the :format option" do
