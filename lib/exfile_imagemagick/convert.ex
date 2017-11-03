@@ -34,7 +34,7 @@ defmodule ExfileImagemagick.Convert do
   end
 
   defp should_format?(%LocalFile{path: path}, dest_format) do
-    case SysRunner.image_cmd("identify", ["-format", "%m", path]) do
+    case SysRunner.cmd("identify", ["-format", "%m", path]) do
       {current_format, 0} ->
         current_format = current_format |> String.strip |> String.downcase
         dest_format != current_format
@@ -50,7 +50,7 @@ defmodule ExfileImagemagick.Convert do
       "-auto-orient",
       dest_format <> ":" <> new_path
     ]
-    case SysRunner.image_cmd("convert", convert_args) do
+    case SysRunner.cmd("convert", convert_args) do
       {_, 0} ->
         meta = Map.put(meta, "format", String.upcase(dest_format))
         {:ok, %LocalFile{path: new_path, meta: meta}}

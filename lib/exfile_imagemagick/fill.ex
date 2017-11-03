@@ -40,7 +40,7 @@ defmodule ExfileImagemagick.Fill do
       destination
     ]
 
-    case SysRunner.image_cmd("convert", convert_args) do
+    case SysRunner.cmd("convert", convert_args) do
       {_, 0} ->
         {:ok, %LocalFile{path: new_path}}
       {error, _} ->
