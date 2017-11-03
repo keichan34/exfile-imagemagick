@@ -9,7 +9,7 @@ defmodule ExfileImagemagick.Server do
 
   def cmd(s, command, args) do
     case @image_processor do
-      :graphicsmagick -> GenServer.call(s, {:cmd, "GM", [command] ++ args})
+      :graphicsmagick -> GenServer.call(s, {:cmd, "gm", [command] ++ args})
       _ -> GenServer.call(s, {:cmd, command, args})
     end
   end
