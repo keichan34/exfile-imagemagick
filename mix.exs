@@ -34,6 +34,7 @@ defmodule ExfileImagemagick.Mixfile do
     [
       {:exfile, "~> 0.3.1"},
       {:poolboy, "~> 1.5.1"},
+      {:ecto, "~> 1.0 or ~> 2.0", optional: true},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.11", only: :dev}
     ]
