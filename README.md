@@ -35,7 +35,7 @@ An [ImageMagick](http://www.imagemagick.org) file processor suite for [Exfile](h
 
 ## Storing metadata to the database
 
-You can `cast_metadata` and store it to the database in separate fields:
+You can `cast_metadata` for a file and store it to the database in separate fields:
 
 ``` elixir
 defmodule MyApp.User do
@@ -45,21 +45,21 @@ defmodule MyApp.User do
 
   def changeset(model, params) do
     model
-    |> cast(params, [:image])
-    |> cast_metadata(:image, "ExposureTime")
-    |> cast_metadata(:image, "ExifOffset", :my_custom_ecto_field)
-    |> cast_metadata(:image, "DateTimeOriginal", date_time_original: :naive_datetime)
-    |> cast_metadata(:image, "MeteringMode", another_custom_field: :integer)
+    |> cast(params, [:avatar_image])
+    |> cast_metadata(:avatar_image, "ExposureTime")
+    |> cast_metadata(:avatar_image, "ExifOffset", :my_custom_ecto_field)
+    |> cast_metadata(:avatar_image, "DateTimeOriginal", date_time_original: :naive_datetime)
+    |> cast_metadata(:avatar_image, "MeteringMode", another_custom_field: :integer)
     |> ...
   end
 end
 ```
 
 In the example above the ecto field for `ExposureTime` is computed automatically as `image_exposure_time`.
-`ExifOffset` value ist saved to `my_custom_ecto_field`.
-`DateTimeOriginal` metadatavalue is converted to :naive_date_time (Ecto 2 required) and then saved  to `date_time_original` field. `MeteringMode` is converted to integer and then saved to `another_custom_field`.
+`ExifOffset` value ist saved as string to `my_custom_ecto_field`.
+`DateTimeOriginal` metadatavalue is converted to :naive_date_time and then saved  to `date_time_original` field. `MeteringMode` is converted to integer and saved to `another_custom_field`.
 
-Extracted metadata values are stored as `:string` by default. Conversion to `:naive_date_time` and `:integer` are supported.
+Generally, `cast_metadata` extracts values as strings. Type conversions to `:naive_datetime` and `:integer` are currently supported.
 
 ## Optional GraphicsMagick Configuration
 
