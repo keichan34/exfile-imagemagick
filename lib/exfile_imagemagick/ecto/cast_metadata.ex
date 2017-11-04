@@ -32,6 +32,10 @@ if Code.ensure_loaded?(Ecto) do
       Changeset.put_change(changeset, ecto_field, value)
     end
 
+    defp put_metadata({:ok, processed_file}, changeset, metadata_field_name, ecto_field, :integer) do
+      Changeset.put_change(changeset, ecto_field, String.to_integer(processed_file.meta[metadata_field_name]))
+    end
+
     defp put_metadata({:ok, processed_file}, changeset, metadata_field_name, ecto_field, _) do
       Changeset.put_change(changeset, ecto_field, processed_file.meta[metadata_field_name])
     end

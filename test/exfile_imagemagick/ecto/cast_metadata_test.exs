@@ -26,9 +26,11 @@ defmodule Exfile.Ecto.CastContentTypeTest do
     changeset = Ecto.Changeset.cast(initial_changeset(), %{ image: image_file() }, [:image], [])
       |> cast_metadata(:image, "DateTimeOriginal", field1: :naive_datetime)
       |> cast_metadata(:image, "ExposureTime", field2: :string)
+      |> cast_metadata(:image, "MeteringMode", field3: :integer)
 
     assert changeset.changes[:field1] == ~N[2012-08-27 08:17:02]
     assert changeset.changes[:field2] == "1/400"
+    assert changeset.changes[:field3] == 5
   end
 
   test "doesn't assign anything if file is not present in changeset" do
