@@ -32,3 +32,17 @@ An [ImageMagick](http://www.imagemagick.org) file processor suite for [Exfile](h
 * `fill`
 * `limit`
 * `metadata`
+
+## Optional GraphicsMagick Configuration
+
+Instead of ImageMagick you may optionally choose [GraphicsMagick](www.graphicsmagick.org) as image processor.
+
+In `config.exs`:
+
+```elixir
+config :exfile_imagemagick, image_processor: :graphicsmagick
+```
+
+You also need to ensure that `GM` binary is in your environment's `PATH`.
+
+See `ExfileImagemagick.Config` for defaults.

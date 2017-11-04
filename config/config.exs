@@ -1,25 +1,13 @@
-# This file is responsible for configuring your application
-# and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-# This configuration is loaded before any dependency and is restricted
-# to this project. If another project depends on this project, this
-# file won't be loaded nor affect the parent project. For this reason,
-# if you want to provide default values for your application for
-# 3rd-party users, it should be done in your "mix.exs" file.
 
-# You can configure for your application as:
+# You can configure the image_processor to be one of :imagemagick or :graphicsmagick
+# The default image processor is :imagemagick
 #
-#     config :exfile_imagemagick, key: :value
+# In case of imagemagick make sure that `convert` executable is in your environment's path
+# In case of graphicsmagick make sure that `GM` executable is in your environment's path
 #
-# And access this configuration in your application as:
-#
-#     Application.get_env(:exfile_imagemagick, :key)
-#
-# Or configure a 3rd-party app:
-#
-#     config :logger, level: :info
-#
+#config :exfile_imagemagick, image_processor: :imagemagick
 
 # It is also possible to import configuration files, relative to this
 # directory. For example, you can emulate configuration per environment
@@ -27,4 +15,4 @@ use Mix.Config
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env}.exs"
+import_config "#{Mix.env}.exs"

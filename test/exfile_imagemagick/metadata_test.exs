@@ -7,10 +7,9 @@ defmodule ExfileImagemagick.MetadataTest do
     path = EITH.image_path("DSC08511s25.jpg")
     file = %LocalFile{path: path}
     {:ok, file} = ExfileImagemagick.Metadata.call(file, [], [])
-
     assert file.meta["format"] == "JPEG"
     assert file.meta["image_size"] == "1148x764"
-    assert file.meta["exif:DateTimeOriginal"] == "2012:08:27 08:17:02"
+    assert file.meta["DateTimeOriginal"] == "2012:08:27 08:17:02"
   end
 
   test "it works with an IO-based LocalFile" do
@@ -23,7 +22,7 @@ defmodule ExfileImagemagick.MetadataTest do
 
     assert io_file.meta["format"] == "JPEG"
     assert io_file.meta["image_size"] == "1148x764"
-    assert io_file.meta["exif:DateTimeOriginal"] == "2012:08:27 08:17:02"
+    assert io_file.meta["DateTimeOriginal"] == "2012:08:27 08:17:02"
   end
 
   test "it fails on a nonexistant file" do

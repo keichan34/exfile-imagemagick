@@ -33,7 +33,11 @@ defmodule ExfileImagemagick.Metadata do
     |> Enum.reduce(%{}, fn(x, map) ->
       case String.split(x, "=") do
         [key, value] ->
-          Map.put(map, key, value)
+          # Imagemagick produces EXIF file information as "exif:DateTimeOriginal"
+          # while GraphicsMagick produces the same information as "DateTimeOriginal"
+          # Thus we normalize EXIF keys to the GraphicsMagick format convention
+          cleaned_key = String.replace(key, "exif:","")
+          Map.put(map, cleaned_key, value)
         _ ->
           map
       end

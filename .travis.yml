@@ -5,3 +5,10 @@ elixir:
 otp_release:
   - 18.2
   - 19.0
+before_install:
+  - sudo add-apt-repository -y ppa:rwky/graphicsmagick
+  - sudo apt-get update
+  - sudo apt-get install imagemagick graphicsmagick libgraphicsmagick3
+env:
+  - MIX_ENV=test
+  - MIX_ENV=graphicsmagick_test

@@ -1,12 +1,17 @@
 defmodule ExfileImagemagick.Server do
   use GenServer
 
+  @image_processor Application.get_env(:exfile_imagemagick, :image_processor, :imagemagick)
+
   def start_link(_args) do
     GenServer.start_link(__MODULE__, :ok)
   end
 
   def cmd(s, command, args) do
-    GenServer.call(s, {:cmd, command, args})
+    case @image_processor do
+      :graphicsmagick -> GenServer.call(s, {:cmd, "gm", [command] ++ args})
+      _ -> GenServer.call(s, {:cmd, command, args})
+    end
   end
 
   def init(:ok) do
