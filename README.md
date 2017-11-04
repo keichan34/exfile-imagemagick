@@ -57,9 +57,9 @@ end
 
 In the example above the ecto field for `ExposureTime` is computed automatically as `image_exposure_time`.
 `ExifOffset` value ist saved as string to `my_custom_ecto_field`.
-`DateTimeOriginal` metadatavalue is converted to :naive_date_time and then saved  to `date_time_original` field. `MeteringMode` is converted to integer and saved to `another_custom_field`.
+The value of `DateTimeOriginal` metadata is converted to `:naive_datetime` and then saved to `date_time_original` field. `MeteringMode` is converted to integer and saved to `another_custom_field`.
 
-Generally, `cast_metadata` extracts values as strings. Type conversions to `:naive_datetime` and `:integer` are currently supported.
+Generally, `cast_metadata` extracts values as `:string` type. Type conversions to `:naive_datetime` and `:integer` are currently supported.
 
 ## Optional GraphicsMagick Configuration
 
