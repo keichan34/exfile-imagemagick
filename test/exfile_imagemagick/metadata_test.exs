@@ -25,6 +25,18 @@ defmodule ExfileImagemagick.MetadataTest do
     assert io_file.meta["DateTimeOriginal"] == "2012:08:27 08:17:02"
   end
 
+  test "non existant meta data yield nil" do
+    path = EITH.image_path("empty.png")
+    file = %LocalFile{path: path}
+    {:ok, io} = LocalFile.open(file)
+
+    io_file = %LocalFile{io: io}
+    {:ok, io_file} = ExfileImagemagick.Metadata.call(io_file, [], [])
+    assert io_file.meta["format"] == "PNG"
+    assert io_file.meta["image_size"] == "1x1"
+    assert io_file.meta["DateTimeOriginal"] == nil
+  end
+
   test "it fails on a nonexistant file" do
     path = EITH.image_path("nonexistant.jpg")
     file = %LocalFile{path: path}

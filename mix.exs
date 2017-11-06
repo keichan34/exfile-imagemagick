@@ -5,7 +5,7 @@ defmodule ExfileImagemagick.Mixfile do
     [
       app: :exfile_imagemagick,
       version: "0.1.4",
-      elixir: "~> 1.2",
+      elixir: "~> 1.3",
       build_embedded: Mix.env == :prod,
       start_permanent: Mix.env == :prod,
       deps: deps(),
@@ -34,6 +34,7 @@ defmodule ExfileImagemagick.Mixfile do
     [
       {:exfile, "~> 0.3.1"},
       {:poolboy, "~> 1.5.1"},
+      {:ecto, "~> 2.0", optional: true},
       {:earmark, "~> 0.1", only: :dev},
       {:ex_doc, "~> 0.11", only: :dev}
     ]
