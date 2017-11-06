@@ -28,16 +28,30 @@ if Code.ensure_loaded?(Ecto) do
 
 
     defp put_metadata({:ok, processed_file}, changeset, metadata_field_name, ecto_field, :naive_datetime) do
-      {:ok, value} = from_exif_datetime(processed_file.meta[metadata_field_name])
-      Changeset.put_change(changeset, ecto_field, value)
+      raw_value = processed_file.meta[metadata_field_name]
+      if raw_value != nil do
+        Changeset.put_change(changeset, ecto_field, from_exif_datetime(raw_value))
+      else
+        changeset
+      end
     end
 
     defp put_metadata({:ok, processed_file}, changeset, metadata_field_name, ecto_field, :integer) do
-      Changeset.put_change(changeset, ecto_field, String.to_integer(processed_file.meta[metadata_field_name]))
+      raw_value = processed_file.meta[metadata_field_name]
+      if raw_value != nil do
+        Changeset.put_change(changeset, ecto_field, String.to_integer(raw_value))
+      else
+        changeset
+      end
     end
 
     defp put_metadata({:ok, processed_file}, changeset, metadata_field_name, ecto_field, _) do
-      Changeset.put_change(changeset, ecto_field, processed_file.meta[metadata_field_name])
+      raw_value = processed_file.meta[metadata_field_name]
+      if raw_value != nil do
+        Changeset.put_change(changeset, ecto_field, raw_value)
+      else
+        changeset
+      end
     end
 
     defp put_metadata(_,changeset, _, _, _), do: changeset
@@ -51,7 +65,8 @@ if Code.ensure_loaded?(Ecto) do
              {hour, ""} <- Integer.parse(hour),
              {minute, ""} <- Integer.parse(min),
              {second, ""} <- Integer.parse(sec) do
-          NaiveDateTime.new(year, month, day, hour, minute, second)
+          {:ok, value} = NaiveDateTime.new(year, month, day, hour, minute, second)
+          value
         else
           {:error, reason} -> {:error, reason}
           _ -> {:error, :invalid_format}

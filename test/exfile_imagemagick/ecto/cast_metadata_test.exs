@@ -33,6 +33,17 @@ defmodule Exfile.Ecto.CastContentTypeTest do
     assert changeset.changes[:field3] == 5
   end
 
+  test "doesn't assign non-existant metadata" do
+    changeset = Ecto.Changeset.cast(initial_changeset(), %{ image: image_file("empty.png") }, [:image], [])
+      |> cast_metadata(:image, "DateTimeOriginal", field1: :naive_datetime)
+      |> cast_metadata(:image, "ExposureTime", field2: :string)
+      |> cast_metadata(:image, "MeteringMode", field3: :integer)
+
+    assert changeset.changes[:field1] == nil
+    assert changeset.changes[:field2] == nil
+    assert changeset.changes[:field3] == nil
+  end
+
   test "doesn't assign anything if file is not present in changeset" do
     changeset = cast(initial_changeset(), %{ image: nil }, [:image], [])
     |> cast_metadata(:image, "DateTimeOriginal")
@@ -59,7 +70,7 @@ defmodule Exfile.Ecto.CastContentTypeTest do
     { data, types }
   end
 
-  defp image_file() do
-    %Plug.Upload{ path: "test/support/images/DSC08511s25.jpg", filename: "DSC08511s25.jpg" }
+  defp image_file(filename\\"DSC08511s25.jpg") do
+    %Plug.Upload{ path: "test/support/images/#{filename}", filename: filename }
   end
 end
