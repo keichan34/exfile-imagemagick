@@ -23,4 +23,14 @@ defmodule ExfileImagemagick.LimitTest do
     assert file.meta["format"] == "PNG"
     assert file.meta["image_size"] == "100x67"
   end
+
+  test "it works with the :extra_args option" do
+    path = EITH.image_path("DSC08511s25.jpg")
+    file = %LocalFile{path: path}
+    {:ok, file} = ExfileImagemagick.Limit.call(file, ["100", "100"], [extra_args: "-bordercolor white -border 10x0"])
+    {:ok, file} = ExfileImagemagick.Metadata.call(file, [], [])
+
+    assert file.meta["format"] == "JPEG"
+    assert file.meta["image_size"] == "120x67"
+  end
 end

@@ -32,9 +32,8 @@ defmodule ExfileImagemagick.Limit do
       file.path,
       "-auto-orient",
       "-resize",
-      dest_dimensions,
-      destination
-    ]
+      dest_dimensions
+    ] ++ extra_args(opts) ++ [destination]
 
     case SysRunner.cmd("convert", convert_args) do
       {_, 0} ->

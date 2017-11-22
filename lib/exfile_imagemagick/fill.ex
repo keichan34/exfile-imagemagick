@@ -36,9 +36,8 @@ defmodule ExfileImagemagick.Fill do
       "-gravity", "center",
       "-crop",
       dest_dimensions <> "+0+0",
-      "+repage",
-      destination
-    ]
+      "+repage"
+    ] ++ extra_args(opts) ++ [destination]
 
     case SysRunner.cmd("convert", convert_args) do
       {_, 0} ->
