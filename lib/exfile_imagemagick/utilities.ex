@@ -14,4 +14,11 @@ defmodule ExfileImagemagick.Utilities do
       :error -> path
     end
   end
+
+  def extra_args(opts) do
+    opts
+    |> Keyword.get(:extra_args, "")
+    |> String.split(" ")
+    |> Enum.reject(& &1 == "")
+  end
 end

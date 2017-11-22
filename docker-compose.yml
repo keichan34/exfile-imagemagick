@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  exfile:
+    build: .
+    volumes:
+      - ./:/app
+      - ~/.bash_history:/root/.bash_history
